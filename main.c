@@ -4,24 +4,42 @@
 int main()
 {
     //les variables
-    int i,j,k,x,y,z,h,m,T[4];
-    //
-    printf("les 4 nombres sont :\n");
-    for(i=1;i<=500;i++){
-        x=i;
-        for(j=1;j<=500;j++){
-            y=j;
-            for(k=1;k<=500;k++){
-                z=k;
-                m = x*100 + y*10 + z;
-                if(m == pow(x,3) + pow(y,3) + pow(z,3)){
-                        for(h=0;h<2;h++){
-                            T[h]= m;
-                            printf("%d\t",T[h]);
-                        }
-                }
-            }
+    float a,b,c,delta,x1,x2;
+    char F;
+    //boucle pour la refaire d'operation
+	do{
+        //demende des valeurs
+        printf("Donner la valeur de a :\n");
+        scanf("%f",&a);
+        printf("Donner la valeur de b :\n");
+        scanf("%f",&b);
+        printf("Donner la valeur de c :\n");
+        scanf("%f",&c);
+        //calcule de dela
+        delta = pow(b,2) - 4*a*c;
+        printf("Le discriminant de cette equation est : %f\n", delta);
+        //les racines
+        if(delta > 0)
+        {
+            x1 = (-b - sqrt(delta))/2*a;
+            x2 = (-b + sqrt(delta))/2*a;
+            printf("Le nombre des solutions est : 2\nX1 = %f\tX2 = %f\n",x1,x2);
         }
-    }
+        else if (delta < 0)
+        {
+            printf("les solutions de ce equation est depends à des nombres complexe :\n");
+        }
+        else
+        {
+            x1 = -b/2*a;
+            printf("Le nombre des solutions est : 1\nX1 = %f\n",x1);
+        }
+        //fin de operation
+		do{
+			printf("\nSi vous voullez refaire une autre operation clique sur Y, si non clique sur Q\n");
+		    scanf("%s",&F);
+		}while(F!= 'Y' && F!= 'Q');
+	}while(F == 'Y');
+	exit(0);
     return 0;
 }
